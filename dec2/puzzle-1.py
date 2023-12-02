@@ -1,18 +1,18 @@
 file = open("input.txt")
 lines = file.read().splitlines()
 
-redCubes = 12
-greenCubes = 13
-blueCubes = 14
+input_red_cubes = 12
+input_green_cubes = 13
+input_blue_cubes = 14
 
 
 def check_possibility(id, sets):
-    for set in sets:
-        reds = set["red"]
-        blues = set["blue"]
-        greens = set["green"]
+    for values in sets:
+        reds = values["red"]
+        blues = values["blue"]
+        greens = values["green"]
 
-        if reds > redCubes or greens > greenCubes or blues > blueCubes:
+        if reds > input_red_cubes or greens > input_green_cubes or blues > input_blue_cubes:
             return 0
 
     print(id, sets)

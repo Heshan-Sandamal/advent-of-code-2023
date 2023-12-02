@@ -1,12 +1,11 @@
 file = open("input.txt")
 lines = file.read().splitlines()
 
-numberStrings = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-
+number_strings = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
 def get_string_index(text):
-    for idx in range(len(numberStrings)):
-        if numberStrings[idx] in text:
+    for idx in range(len(number_strings)):
+        if number_strings[idx] in text:
             return idx
     return -1
 
@@ -16,6 +15,7 @@ for text in lines:
     chars = list(text)
     digits = []
     last_index = 0
+
     for x in range(len(text)):
         if text[x].isnumeric():
             digits.append(text[x])
@@ -24,9 +24,10 @@ for text in lines:
             index = get_string_index(text[last_index:x + 1])
             if index != -1:
                 digits.append(str(index + 1))
-                last_index = x - len(numberStrings[index]) + 1
+                last_index = x - len(number_strings[index]) + 1
 
     print(digits)
+
     number = ''
     length = len(digits)
     if length >= 2:

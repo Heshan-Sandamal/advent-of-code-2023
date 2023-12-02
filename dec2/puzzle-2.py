@@ -2,15 +2,15 @@ file = open("input.txt")
 lines = file.read().splitlines()
 
 
-def get_power(sets=[]):
+def get_power(sets):
     min_reds = 0
     min_blues = 0
     min_greens = 0
 
-    for setData in sets:
-        reds = setData["red"]
-        blues = setData["blue"]
-        greens = setData["green"]
+    for values in sets:
+        reds = values["red"]
+        blues = values["blue"]
+        greens = values["green"]
 
         if reds > min_reds:
             min_reds = reds
