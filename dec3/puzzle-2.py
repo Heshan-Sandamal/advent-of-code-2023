@@ -2,7 +2,7 @@ file = open("input.txt")
 lines = file.read().splitlines()
 
 matrix = []
-data = []
+number_obj = []
 for row in lines:
     matrix.append(list(row))
 print(matrix)
@@ -10,7 +10,7 @@ print(matrix)
 
 # Get all adjacent cells with numbers to *
 # Return [(x,y),(x,y)]
-def get_adjacent_cells_indexes(row, col):
+def get_adjacent_cells_index_pairs(row, col):
     rows, cols = len(matrix), len(matrix[0])
 
     indexes = []
@@ -27,23 +27,24 @@ def is_adj_number_exists(x, y):
 
 
 # Create number using left numbers + given cell + right numbers
-def get_number(cell_indexes):
-    number = matrix[cell_indexes[0]][cell_indexes[1]]
-    x = cell_indexes[0]
+def get_number(cell):
+    row = cell[0]
+    column = cell[1]
+    number = matrix[row][column]
 
     # Add Left side of numbers
-    i = cell_indexes[1] - 1
-    while i >= 0 and matrix[x][i].isnumeric():
-        number = str(matrix[x][i]) + str(number)
+    i = column - 1
+    while i >= 0 and matrix[row][i].isnumeric():
+        number = str(matrix[row][i]) + str(number)
         i = i - 1
 
     # Add Right side of numbers
-    j = cell_indexes[1] + 1
-    while j < len(matrix[x]) and matrix[x][j].isnumeric():
-        number = str(number) + str(matrix[x][j])
+    j = column + 1
+    while j < len(matrix[row]) and matrix[row][j].isnumeric():
+        number = str(number) + str(matrix[row][j])
         j = j + 1
 
-    return {"number": int(number), "row": x, "start_index": i + 1, "end_index": j - 1}
+    return {"number": int(number), "row": row, "start_index": i + 1, "end_index": j - 1}
 
 
 values = []
@@ -52,21 +53,22 @@ for x in range(len(matrix)):
     row = []
     for y in range(len(matrix[x])):
         if matrix[x][y] == "*":
-            all_adjacent_cell_indexes = get_adjacent_cells_indexes(x, y)
+            adjacent_cells = get_adjacent_cells_index_pairs(x, y)
 
-            if len(all_adjacent_cell_indexes) >= 2:
+            if len(adjacent_cells) >= 2:
                 prev = {"number": -1, "start_index": -1, "end_index": -1, "row": -1}
                 number_array = []
-                for cellIndexes in all_adjacent_cell_indexes:
-                    data = get_number(cellIndexes)
+                for cell in adjacent_cells:
+                    number_obj = get_number(cell)
                     # Avoid adding the same number in the same row
-                    if data["row"] == prev["row"]:
-                        if prev["start_index"] != data["start_index"] and prev["end_index"] != data["end_index"]:
-                            number_array.append(data["number"])
-                            prev = data
+                    if number_obj["row"] == prev["row"]:
+                        if (prev["start_index"] != number_obj["start_index"]
+                                and prev["end_index"] != number_obj["end_index"]):
+                            number_array.append(number_obj["number"])
+                            prev = number_obj
                     else:
-                        number_array.append(data["number"])
-                        prev = data
+                        number_array.append(number_obj["number"])
+                        prev = number_obj
 
                 if len(number_array) == 2:
                     total += (number_array[0] * number_array[1])
