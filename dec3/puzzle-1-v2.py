@@ -10,7 +10,7 @@ print(matrix)
 
 # Get all adjacent cells with numbers to *
 # Return [(x,y),(x,y)]
-def get_adjacent_cells_index_pairs(row, col):
+def get_adjacent_cells_with_numbers(row, col):
     rows, cols = len(matrix), len(matrix[0])
 
     indexes = []
@@ -57,7 +57,7 @@ for x in range(len(matrix)):
     row = []
     for y in range(len(matrix[x])):
         if is_symbol(x, y):
-            adjacent_cells = get_adjacent_cells_index_pairs(x, y)
+            adjacent_cells = get_adjacent_cells_with_numbers(x, y)
 
             if len(adjacent_cells) >= 2:
                 prev = {"number": -1, "start_index": -1, "end_index": -1, "row": -1}
