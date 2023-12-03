@@ -15,4 +15,5 @@ if __name__ == '__main__':
     print(text[0:2])
     print_hi('PyCharm')
 
+print((1, 2)[0])
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
