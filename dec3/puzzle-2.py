@@ -8,7 +8,7 @@ for row in lines:
 print(matrix)
 
 
-# Get all adjacent cell to *
+# Get all adjacent cells with numbers to *
 # Return [(x,y),(x,y)]
 def get_adjacent_cells_indexes(row, col):
     rows, cols = len(matrix), len(matrix[0])
