@@ -17,5 +17,4 @@ for text in lines:
     if value != -1:
         total += 2 ** value
 
-print("Total")
-print(total)
+print("Total", total)
