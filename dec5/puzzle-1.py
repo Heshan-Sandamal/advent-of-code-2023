@@ -4,42 +4,18 @@ lines = file.read().splitlines()
 seeds = list(map(int, lines[0].split(": ")[1].split()))
 print(seeds)
 
-# Holds data
-data = []
-seed_soil_list = []
-soil_fert_list = []
-fert_water_list = []
-water_light_list = []
-light_temp_list = []
-temp_humid_list = []
-humid_location_list = []
-
 # Get Input
-for text in lines[1:]:
+data = []
+temp = []
+for text in lines[2:]:
+    if "map" in text:
+        continue
     if text.strip() == "":
+        data.append(temp)
+        temp = []
         continue
-    if text == "seed-to-soil map:":
-        data = seed_soil_list
-        continue
-    if text == "soil-to-fertilizer map:":
-        data = soil_fert_list
-        continue
-    if text == "fertilizer-to-water map:":
-        data = fert_water_list
-        continue
-    if text == "water-to-light map:":
-        data = water_light_list
-        continue
-    if text == "light-to-temperature map:":
-        data = light_temp_list
-        continue
-    if text == "temperature-to-humidity map:":
-        data = temp_humid_list
-        continue
-    if text == "humidity-to-location map:":
-        data = humid_location_list
-        continue
-    data.append(list(map(int, text.split())))
+    temp.append(list(map(int, text.split())))
+data.append(temp)
 
 
 # Map source -> destination
@@ -53,21 +29,23 @@ def map_values(data_list, number):
     return number
 
 
+print(len(data))
+
 lt = []
 for seed in seeds:
     lt.append(map_values(
-        humid_location_list,
+        data[6],
         map_values(
-            temp_humid_list,
+            data[5],
             map_values(
-                light_temp_list,
+                data[4],
                 map_values(
-                    water_light_list,
+                    data[3],
                     map_values(
-                        fert_water_list,
+                        data[2],
                         map_values(
-                            soil_fert_list,
-                            map_values(seed_soil_list, seed)
+                            data[1],
+                            map_values(data[0], seed)
                         )))))))
 
 print("min", min(lt))

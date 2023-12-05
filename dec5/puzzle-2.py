@@ -12,40 +12,16 @@ for x in range(0, len(seeds), 2):
 
 # Holds Data
 data = []
-seed_soil_list = []
-soil_fert_list = []
-fert_water_list = []
-water_light_list = []
-light_temp_list = []
-temp_humid_list = []
-humid_location_list = []
-
-# Get Input
-for text in lines[1:]:
+temp = []
+for text in lines[2:]:
+    if "map" in text:
+        continue
     if text.strip() == "":
+        data.append(temp)
+        temp = []
         continue
-    if text == "seed-to-soil map:":
-        data = seed_soil_list
-        continue
-    if text == "soil-to-fertilizer map:":
-        data = soil_fert_list
-        continue
-    if text == "fertilizer-to-water map:":
-        data = fert_water_list
-        continue
-    if text == "water-to-light map:":
-        data = water_light_list
-        continue
-    if text == "light-to-temperature map:":
-        data = light_temp_list
-        continue
-    if text == "temperature-to-humidity map:":
-        data = temp_humid_list
-        continue
-    if text == "humidity-to-location map:":
-        data = humid_location_list
-        continue
-    data.append(list(map(int, text.split())))
+    temp.append(list(map(int, text.split())))
+data.append(temp)
 
 
 # Map destination -> source
@@ -68,20 +44,22 @@ def validate_seed_exists(seed):
     return False
 
 
+# Brute force approach : Checking all the possibilities for location
+# To be optimized since this takes some time to provide the answer
 for val in itertools.count():
     seed = map_destination_to_source(
-        seed_soil_list,
+        data[0],
         map_destination_to_source(
-            soil_fert_list,
+            data[1],
             map_destination_to_source(
-                fert_water_list,
+                data[2],
                 map_destination_to_source(
-                    water_light_list,
+                    data[3],
                     map_destination_to_source(
-                        light_temp_list,
+                        data[4],
                         map_destination_to_source(
-                            temp_humid_list,
-                            map_destination_to_source(humid_location_list, val)
+                            data[5],
+                            map_destination_to_source(data[6], val)
                         ))))))
     if validate_seed_exists(seed):
         print("Min Location", val)
