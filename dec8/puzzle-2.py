@@ -29,7 +29,7 @@ def get_next_element(element, instruction):
         return element[1]
 
 
-# This should give the answer but takes a huge time (but gives answer for the example)
+# This should give the answer but takes a huge time (but gives answer for the small example)
 count = 0
 while (True):
     x = instructions[count % len(instructions)]
