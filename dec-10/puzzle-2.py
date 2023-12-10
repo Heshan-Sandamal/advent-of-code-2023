@@ -65,7 +65,7 @@ cells.append((x - 1, y))
 x, y, previous_x, previous_y = move(x - 1, y, x, y)
 cells.append((x, y))
 
-count = 2
+count = 2  # including start and next cell
 while (True):
     x, y, previous_x, previous_y = move(x, y, previous_x, previous_y)
     count += 1
@@ -73,7 +73,7 @@ while (True):
     if (data[x][y] == "S"):
         break
 
-p = Path(cells)
+path = Path(cells)
 total = 0
 for y in range(len(lines)):
     for x in range(len(lines[0])):
@@ -82,7 +82,7 @@ for y in range(len(lines)):
         # Checks the tile falls inside the area covered by the cells
         """ todo: Need to come up with the internal logic instead of using matplotlib to check whether the point falls within the area 
         (however, this works perfectly) """
-        if p.contains_point((x, y)):
+        if path.contains_point((x, y)):
             total += 1
 
 print("Total tiles", total)
