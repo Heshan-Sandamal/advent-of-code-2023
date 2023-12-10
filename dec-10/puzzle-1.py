@@ -14,6 +14,7 @@ for x in range(len(data)):
             break
 print("Start", start)
 
+
 # Move based on the pipe ( For a given pipe, the movement direction is determined by the previous cell's position )
 # Eg: for | , if previous cell's row < current row , the movement is downwards else upwards
 def move(x, y, prev_x, prev_y):
@@ -62,4 +63,5 @@ while (True):
     if (data[x][y] == "S"):
         break
 
+# The distance to the longest tile is count / 2 because (total_steps_of_loop = 2 * distance_from_longest_tile)
 print("Count", int(count / 2))
