@@ -11,8 +11,8 @@ for line in lines:
 
 # Took a long time to realize the solution since this cant be solved by brute force, had to write from the scratch again
 # definitely need to use an approach which supports dynamic programming model to cache results
-# Tricky part is to identify child problem which can be solved to solve the parent problem
-# And then the overlapping sub-problem which can be cached
+# Tricky part is to identify child problems which can be solved to solve the parent problem
+# And then the overlapping sub-problems which can be cached
 
 DP = {}
 
