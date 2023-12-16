@@ -10,8 +10,7 @@ for line in lines:
 
 
 def generate_contiguous_count_array(lt):
-    values = []
-    count = 0
+    values, count = [], 0
     for x in range(len(lt)):
         if (lt[x] == "#"):
             count += 1
@@ -29,8 +28,7 @@ total = 0
 for row, pattern in zip(rows, patterns):
     q_count = sum(1 for t in row if t == "?")
     all_permutations = list(itertools.product(['.', '#'], repeat=q_count))
-    count = 0
-    row_copy = [i for i in row]
+    count, row_copy = 0, [i for i in row]
     for perm in all_permutations:
         index = 0
         for t in range(len(row)):
