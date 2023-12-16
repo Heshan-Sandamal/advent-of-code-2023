@@ -61,9 +61,6 @@ def traverse(row, column, direction):
 
 max_traversals = 0
 
-# Some optimizations can be done to reduce the execution time (currently around 3mins)
-# since I did not consider the overlapping between traversals from different starting points
-
 # Starting from rows first and last positions
 for x in range(len(grid)):
     for k in [0, columns_length - 1]:
