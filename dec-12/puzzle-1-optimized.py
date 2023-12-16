@@ -21,7 +21,7 @@ def calculate(rows, blocks, continuous_count, str, in_group=False):
     total = 0
     current = rows[0] if rows else None
 
-    # This is an over-lapping sub-problem
+    # This is an overlapping sub-problem
     # For a particular index -> remaining rows, remaining_blocks, current hash count
     # Current continuous_count is important because of adjacent # prior to the current index will have an impact
     # Eg: ....##[sub-problem]
