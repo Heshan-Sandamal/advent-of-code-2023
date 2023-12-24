@@ -10,7 +10,7 @@ with open("input.txt") as file:
 
 # Here this formula is derived by formulating the formula for each line
 # x = x1 + v1x*t , y = y1 + v1y*t
-# Then remove t from above 2 and create a formula for the line something like y = a*x + b using x0,v1,y0,v2
+# Then remove t from above 2 and create a formula for the line something like y = a*x + b using x1,v1x,y1,v1y
 # Get the line formulas for a pair
 # And then make them equal and find the x and y values of the intersection
 def calculate(x1, y1, v1x, v1y, x2, y2, v2x, v2y):
