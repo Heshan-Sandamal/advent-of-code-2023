@@ -17,9 +17,12 @@ print(G)
 
 # Dividing the graph into two means its a cut and this provides the minimum cut of the graph
 # Which is the one given as the requirement
+# I need to refer old school algo class's flow algorithms & min-cut theories to do it myself rather than using library
+# However, this has it already built in so why not use it?? But I should definitely try to implement that
 cuts = list(nx.minimum_edge_cut(G))
 print(cuts)
 
+# Removing the edges in the min cut
 G.remove_edge(cuts[0][0], cuts[0][1])
 G.remove_edge(cuts[1][0], cuts[1][1])
 G.remove_edge(cuts[2][0], cuts[2][1])
