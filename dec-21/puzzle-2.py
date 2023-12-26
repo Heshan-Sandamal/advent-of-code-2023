@@ -1,8 +1,6 @@
 import math
-import sys
 from heapq import heappop, heappush
 
-sys.setrecursionlimit(100000000)
 with open("input.txt") as file:
     lines = file.read().splitlines()
 
@@ -19,6 +17,7 @@ for x in range(len(grid)):
             break
 
 
+# Check new x,y are valid cells
 def is_valid_move(new_x, new_y):
     map_pos_x = new_x % len(grid[0])
     map_pos_y = new_y % len(grid)
@@ -26,6 +25,7 @@ def is_valid_move(new_x, new_y):
         map_pos_y] == ".")
 
 
+# Get Neighbours of the current cell
 def get_neighbours(steps, row, column, destination_count):
     neighbours = []
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -35,7 +35,6 @@ def get_neighbours(steps, row, column, destination_count):
         new_y = (column + new_direction[1])
         if (is_valid_move(new_x, new_y) and steps <= destination_count):
             neighbours.append((steps + 1, (new_x, new_y)))
-
     return neighbours
 
 
@@ -43,11 +42,9 @@ def get_neighbours(steps, row, column, destination_count):
 # Always find the node with least heat loss
 
 def calculate(destination_count):
-    total = 0
     condition = 0 if destination_count % 2 == 0 else 1
     visited_nodes = set()
     priority_queue = [(0, start)]
-    # destination_count = 26501365
     total = 0
     while priority_queue:
         node = heappop(priority_queue)
@@ -65,15 +62,6 @@ def calculate(destination_count):
         for neighbour in neighbours:
             heappush(priority_queue, neighbour)
     return total
-
-
-def is_square(i: int) -> bool:
-    return i == math.isqrt(i) ** 2
-
-
-def is_perfect_cube(number) -> bool:
-    number = abs(number)  # Prevents errors due to negative numbers
-    return round(number ** (1 / 3)) ** 3 == number
 
 
 # It is almost impossible to calculate for steps 26501365 since it takes a lot of when step > 1000
