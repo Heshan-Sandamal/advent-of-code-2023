@@ -69,9 +69,9 @@ def calculate(destination_count):
 # Which gives a hint that the value can be derived if that pattern is identified
 # The pattern can be seen with the differences of calculated  values
 # Consider x1,x2...x26501365 as the reachable garden points with  given steps
-# then calculate, y1 = x2 - x1, z = y2 - y1
-# 26501365 = 65 + grid_size *  202300
-# Pattern in my grid is, z = 30562 when x = 196 + n * grid_size, from n=0 to n=202298
+# then calculate, y1 = x2 - x1, y2 = x3 - x2, z = y2 - y1
+# Also, 26501365 = 65 + grid_size *  202300
+# Pattern in my grid is, z = 30562 when x = 327 + n * grid_size, from n=0 to n=202298
 diff = 0
 diffs_list = []
 for i in range(65, 800, 131):
