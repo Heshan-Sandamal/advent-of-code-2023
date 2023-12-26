@@ -64,10 +64,10 @@ def calculate(destination_count):
     return total
 
 
-# It is almost impossible to calculate for steps 26501365 since it takes a lot of when step > 1000
-# So but the output seems to have a some pattern specially with the given input grid has a pattern of diamonds
-# Which indicates that the value can be derived if that pattern is identified
-# The pattern can be seen with the differences of a value
+# It is almost impossible to calculate for steps 26501365 since it takes a lot of when steps > 1000
+# But the output seems to have a some pattern specially with the given input grid has a pattern of diamonds
+# Which gives a hint that the value can be derived if that pattern is identified
+# The pattern can be seen with the differences of calculated  values
 # y1 = x2 - x1, z = y2 - y1 and then z = 30562 in my case after x=192 for multiplies of grid size
 diff = 0
 diffs_list = []
