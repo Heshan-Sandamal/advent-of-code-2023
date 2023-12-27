@@ -15,8 +15,8 @@ for line in lines:
 
 # Equation of a line in 3d space is x = x0 + a * t , y = y0 + b * t, z = z0 + c * t
 # (x0,y0,z0) - initial positions, (a,b,c) - velocities , t - time
-# Inorder to find they are colliding, basically we need to equal the x,y,z coordinates in a particular time
-# If check rock collide with first hailstone, then
+# To find if they are colliding, x,y,z coordinates of rock & hailstone should be same in a particular time
+# If the rock collides with first hailstone, then
 # x0 + v0x * t1 = x1 + v1x * t1
 # y0 + v0y * t1 = y1 + v1y * t1
 # z0 + v0z * t1 = z1 + v1z * t1
