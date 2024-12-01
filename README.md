@@ -3,3 +3,7 @@ This Repository consists of my solutions for Advent of code 2023 and this is my 
 
 # Language
 I am mainly into Java. However, I like to use python for coding challenges because it minimizes the lines of code
+
+![img.png](resources/img.png)
+![img.png](resources/img1.png)
+![img.png](resources/img3.png)
